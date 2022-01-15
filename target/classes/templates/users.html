@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="https://www.un.org/sustainabledevelopment/sustainable-development-goals/">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="google-signin-client_id" content="1009995049878-7euskld69sbma8m3mbnmpnbdujgav3gf.apps.googleusercontent.com">
+		<title>Hello, [[${#request.userPrincipal.principal.fullName}]]</title>
+		<meta name="description" content="Mending our planet, one leaf at a time.">
+		<link rel="icon" href="favicon.ico" />
+		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+		<link rel="stylesheet" type="text/css" th:href="@{css/main-layout.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{css/content.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{css/users.css}">
+	</head>
+
+	<body>
+		<header>
+			<div class="header-container">
+				<div class="header-logo">
+					<a id="app-logo" href="#">Going Green Digital</a>
+				</div>
+				<nav class="nav-bar">
+					<ul id="nav-list">
+						<li><a class="nav-link" href="#">Information</a></li>
+						<li><a class="nav-link" href="#">Actions</a></li>
+						<li><a class="nav-link" href="#">Footprint Calculator</a></li>
+						<li><a class="nav-link" href="#">Chat</a></li>
+						<li><a class="nav-link" href="#">[[${#request.userPrincipal.principal.fullName}]]</a></li>
+						<li><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<div class="page-content">
+			<div class="container">
+				<div>
+					<h1>
+						Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+					</h1>
+				</div>
+				<br><br><br>
+				<div class="user-table">
+					<table class="table tabled-bordered">
+						<thead class="thead-dark">
+							<th>UserID</th>
+							<th>Email</th>
+							<th>First name</th>
+							<th>Last name</th>
+						</thead>
+						<tbody>
+							<tr th:each="user: ${listUsers}">
+								<td th:text="${user.id}">UserID</td>
+								<td th:text="${user.email}">Email;</td>
+								<td th:text="${user.firstName}">First name</td>
+								<td th:text="${user.lastName}">Last name</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="push"></div>
+		<footer id="footer">
+			<ul id="footer-ul">
+				<li class="footer-list"><a id="footer-logo" href="/">Going Green Digital</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>

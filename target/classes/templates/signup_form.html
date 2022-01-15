@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="https://www.un.org/sustainabledevelopment/sustainable-development-goals/">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id"
+        content="1009995049878-7euskld69sbma8m3mbnmpnbdujgav3gf.apps.googleusercontent.com">
+    <title>Going Green Digital Sign Up</title>
+    <meta name="description" content="Mending our planet, one leaf at a time.">
+    <link rel="icon" href="favicon.ico" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/main-layout.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/content.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/register.css}">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-logo">
+                <a id="app-logo" href="/">Going Green Digital</a>
+            </div>
+            <nav class="nav-bar">
+                <ul id="nav-list">
+                    <li><a class="nav-link" href="#">Information</a></li>
+                    <li><a class="nav-link" href="#">Actions</a></li>
+                    <li><a class="nav-link" href="#">Footprint Calculator</a></li>
+                    <li><a class="nav-link" href="#">Chat</a></li>
+                    <li><a class="nav-link" th:href="@{/login}">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="page-content">
+        <div class="container">
+            <form class="form-signup" method="post" th:object="${user}" th:action="@{/process_register}">
+                <h2 class="form-signup-heading">Sign Up</h2>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" class="form-control" th:field="*{email}"
+                        placeholder="Email Address" required />
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                        th:field="*{password}" minlength="6" maxlength="16" required />
+                    <input type="text" id="firstname" name="firstname" class="form-control" th:field="*{firstName}"
+                        placeholder="First Name" required minlength="2" maxlength="20" />
+                    <input type="text" id="lastname" name="lastname" class="form-control" th:field="*{lastName}"
+                        placeholder="Last Name" required minlength="2" maxlength="20" />
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                <h4 class="form-signup-heading">Already a member? <a th:href="@{/login}">Sign In</a></h4>
+            </form>
+        </div>
+    </div>
+    <div class="push"></div>
+    <footer id="footer">
+        <ul id="footer-ul">
+            <li class="footer-list"><a id="footer-logo" href="/">
+                    <h2>Going Green Digital</h2>
+                </a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>

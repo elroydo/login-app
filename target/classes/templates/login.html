@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="https://www.un.org/sustainabledevelopment/sustainable-development-goals/">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-signin-client_id" content="1009995049878-7euskld69sbma8m3mbnmpnbdujgav3gf.apps.googleusercontent.com">
+        <title>Going Green Digital Log In</title>
+        <meta name="description" content="Mending our planet, one leaf at a time.">
+        <link rel="icon" href="favicon.ico" />
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="stylesheet" type="text/css" th:href="@{css/main-layout.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{css/content.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <div class="header-logo">
+                    <a id="app-logo" href="/">Going Green Digital</a>
+                </div>
+                <nav class="nav-bar">
+                    <ul id="nav-list">
+                        <li><a class="nav-link" href="">Information</a></li>
+                        <li><a class="nav-link" href="">Actions</a></li>
+                        <li><a class="nav-link" href="">Footprint Calculator</a></li>
+                        <li><a class="nav-link" href="">Chat</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="page-content">
+            <div class="container">
+		      <form class="form-signin" method="post" action="/login">
+		        <h2 class="form-signin-heading">Sign In</h2>
+		        <div class="alert alert-danger" role="alert" th:if="${param.error}">Wrong email or password.</div>
+				<div id="my-signin2"></div>
+				<script>
+					function onSuccess(googleUser) {
+					  console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+					}
+					function onFailure(error) {
+					  console.log(error);
+					}
+					function renderButton() {
+					  gapi.signin2.render('my-signin2', {
+					    'scope': 'profile email',
+					    'width': 300,
+					    'height': 50,
+					    'longtitle': true,
+					    'theme': 'dark',
+					    'onsuccess': onSuccess,
+					    'onfailure': onFailure
+					  });
+					}
+				</script>
+				
+				<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+				<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+				<div class="login-divider">
+					<div class="line-login-divider"></div>
+					<div class="or-login-divider">OR</div>
+					<div class="line-login-divider"></div>
+				</div>
+		        <p>
+		          <!--<label for="username" class="sr-only">Username</label>-->
+		          <input type="text" id="username" name="email" class="form-control" placeholder="Username" required autofocus>
+		        </p>
+		        <p>
+		          <!--<label for="password" class="sr-only">Password</label>-->
+		          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+		        </p>
+				<input name="_csrf" type="hidden" value="a529f406-14e7-4818-82f2-8c5a8866a6bc" />
+		        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		        
+		      </form>
+		      <h5 class="form-signin-forgot-password"><a th:href="@{/forgot_password}">Forgot Password</a></h5>
+		      <h4 class="form-signup-heading">Not a member? <a th:href="@{/register}">Sign Up</a></h4>
+			</div>
+        </div>
+        <div class="push"></div>
+        <footer id="footer">
+            <ul id="footer-ul">
+                <li class="footer-list"><a id="footer-logo" href="/">Going Green Digital</a></li>
+            </ul>
+        </footer>
+    </body>
+</html>
